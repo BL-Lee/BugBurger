@@ -1,0 +1,4 @@
+repository "Bugs@gobbledeegook@cloud"
+  path "/"
+    br "/main"
+    co "/main"
