@@ -60,7 +60,7 @@ public class BugController : MonoBehaviour
             {
                 antControllers[i].dead = true;             
                 //Increment counter when we have it   
-                globals.antsCaught++;
+                globals.antsCaught = Mathf.Min(globals.antsCaught + 1, 9);
             }
         }
 
