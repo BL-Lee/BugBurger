@@ -7,6 +7,7 @@ public class BugController : MonoBehaviour
     public List<GameObject> ants;
     private List<AntController> antControllers;
     public GameObject antPrefab;
+    GameGlobals globals;
 
     Vector2 randomStart()
     {
@@ -20,6 +21,8 @@ public class BugController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        globals = GameObject.Find("Globals").GetComponent<GameGlobals>();
+
         ants = new List<GameObject>();
         antControllers = new List<AntController>();
         for (int i = 0; i < 5; i++)
@@ -57,6 +60,7 @@ public class BugController : MonoBehaviour
             {
                 antControllers[i].dead = true;             
                 //Increment counter when we have it   
+                globals.antsCaught++;
             }
         }
 

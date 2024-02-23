@@ -12,12 +12,17 @@ public class HammerController : MonoBehaviour
     float blockWidthY = 0.15f;
     float blockWidthX = 0.18f;
     public BugController bugController;
+    GameGlobals globals;
+    public CameraController CameraController;
+
+    public AudioSource audioPlayer;
 
     private Vector2Int location = new Vector2Int(0,0);
 
     // Start is called before the first frame update
     void Start()
     {
+        globals = GameObject.Find("Globals").GetComponent<GameGlobals>();
         srenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -26,11 +31,15 @@ public class HammerController : MonoBehaviour
     {
         hitTime -= Time.deltaTime;
 
+        if (globals.currentScreen != SCREEN.BUG) return;
+
         if (Input.GetKeyDown(KeyCode.Z) && hitTime <= 0.0f)
         {
             hitTime = 0.5f;
             srenderer.sprite = hit;
             bugController.WhackBugs(location);
+            audioPlayer.Play(0);
+            CameraController.Shake(0.1f);
         }
 
         if (hitTime <= 0.0f && srenderer.sprite == hit)

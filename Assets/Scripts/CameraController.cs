@@ -8,8 +8,14 @@ public class CameraController : MonoBehaviour
     private float targetX;
     private float startX;
     private float transitionTime;
+    GameGlobals globals;
 
     private float totalTransitionTime = 0.5f;
+
+    public float shakeDuration = 0.0f;
+    public float shakeAmount = 0.01f;
+    public float shakeFalloff = 1.0f;
+    Vector3 originalPos;
 
     float EaseOutBack(float x)
     {
@@ -21,8 +27,18 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
+        globals = GameObject.Find("Globals").GetComponent<GameGlobals>();
         cam = GetComponent<Camera>();
+        originalPos = transform.localPosition;
     }
+
+    public void Shake(float duration)
+    {
+        shakeDuration = duration;
+        originalPos = transform.localPosition;
+        shakeAmount = 0.01f;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -32,18 +48,32 @@ public class CameraController : MonoBehaviour
             targetX = -0.84f; //Bug x location
             transitionTime = totalTransitionTime;
             startX = cam.transform.position.x;
+            globals.currentScreen = SCREEN.BUG;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             targetX = 0.0f; //Cook x location
             transitionTime = totalTransitionTime;
             startX = cam.transform.position.x;
+            globals.currentScreen = SCREEN.COOK;
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             targetX = 0.84f; //serve x location
             transitionTime = totalTransitionTime;
             startX = cam.transform.position.x;
+            globals.currentScreen = SCREEN.SERVE;
+        }
+        if (shakeDuration > 0)
+        {
+            transform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
+            shakeDuration -= Time.deltaTime;
+            shakeAmount *= shakeFalloff;
+        }
+        else
+        {
+            shakeDuration = 0;
+            transform.localPosition = originalPos;
         }
 
 
@@ -59,6 +89,7 @@ public class CameraController : MonoBehaviour
             cam.transform.position = new Vector3(newX,0,-10);
             transitionTime -= Time.deltaTime;
         }
+
 
 
     }
