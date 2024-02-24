@@ -11,6 +11,8 @@ public class BlenderBehavior : MonoBehaviour
     public GameObject pan1Key;
     public GameObject pan2ChargeBar;
     public GameObject pan1ChargeBar;
+    public GameObject pan2Burger;
+    public GameObject pan1Burger;
 
     public Sprite empty;
     public Sprite blend1;
@@ -47,6 +49,7 @@ public class BlenderBehavior : MonoBehaviour
     public bool blendReady;
     public bool blending;
     public bool finished;
+    public bool waitingForKeyPressPan;
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +58,7 @@ public class BlenderBehavior : MonoBehaviour
         blendReady = false;
         blending = false;
         overblending = false;
+        waitingForKeyPressPan = false;
         blendingCounter = 1;
         animationCounter = 1;
         overblendingCounter = 1;
@@ -81,16 +85,38 @@ public class BlenderBehavior : MonoBehaviour
             InvokeRepeating("ChargeMeterStart", 0.0f, 0.5f);
         }
 
+        if (Input.GetKeyDown("x") && waitingForKeyPressPan)
+        {
+            CancelInvoke("Blend");
+            CancelInvoke("ChargeMeterStart");
+            CancelInvoke("Overblending");
+            CancelInvoke("Overblended");
+            chargeBar.SetActive(false);
+            this.GetComponent<SpriteRenderer>().sprite = empty;
+            finished = false;
+            blendReady = false;
+            blending = false;
+            overblending = false;
+            waitingForKeyPressPan = false;
+            blendingCounter = 1;
+            animationCounter = 1;
+            overblendingCounter = 1;
+            overblendedCounter = 1;
+            overblendAnimationCounter = 1;
+        }
+
         if (finished){
-            if (!pan2ChargeBar.activeSelf)
+            if (!pan2ChargeBar.activeSelf && !pan2Burger.activeSelf)
             {
                 pan2Key.SetActive(true);
                 finished = false;
+                waitingForKeyPressPan = true;
             }
-            else if (!pan1ChargeBar.activeSelf)
+            else if (!pan1ChargeBar.activeSelf && !pan1Burger.activeSelf)
             {
                 pan1Key.SetActive(true);
                 finished = false;
+                waitingForKeyPressPan = true;
             }
 
         }
