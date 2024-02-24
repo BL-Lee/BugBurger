@@ -8,6 +8,7 @@ public class Pan1Behavior : MonoBehaviour
     public GameObject pan1Key;
     public GameObject chargeBar;
     public GameObject burger;
+    public GameObject burgerManager;
 
     public Sprite uncooked;
     public Sprite halfCooked;
@@ -41,6 +42,8 @@ public class Pan1Behavior : MonoBehaviour
     public bool flipRequired;
     public bool isBurnt;
 
+    GameGlobals globals;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,12 +54,12 @@ public class Pan1Behavior : MonoBehaviour
         overcooked = false;
         flipRequired = true;
         isBurnt = false;
+        globals = gameManger.GetComponent<GameGlobals>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        GameGlobals globals = gameManger.GetComponent<GameGlobals>();
         globals.flipReady1 = overcooking;
 
         if (Input.GetKeyDown("x") && pan1Key.activeSelf && gameManger.GetComponent<GameGlobals>().currentScreen == SCREEN.COOK && !overcooking){
@@ -67,12 +70,15 @@ public class Pan1Behavior : MonoBehaviour
         }
 
         if (Input.GetKeyDown("x") && pan1Key.activeSelf && gameManger.GetComponent<GameGlobals>().currentScreen == SCREEN.COOK && overcooking && flipRequired){
+            
+            
             pan1Key.SetActive(false);
             CancelInvoke("BeginOvercook");
             CancelInvoke("ChargeMeterStart");
             flipRequired = false;
             chargeBar.SetActive(true);
             uncookedCounter = 1;
+            overcooking = false;
             overcookingCounter = 1;
             InvokeRepeating("ChargeMeterStart", 0.0f, 0.4f);
         }
@@ -80,6 +86,13 @@ public class Pan1Behavior : MonoBehaviour
         if (Input.GetKeyDown("x") && pan1Key.activeSelf && gameManger.GetComponent<GameGlobals>().currentScreen == SCREEN.COOK && ((overcooking && !flipRequired) || isBurnt)){
             CancelInvoke("BeginOvercook");
             CancelInvoke("ChargeMeterStart");
+            CancelInvoke("Overcooked");
+
+            
+            burgerManager.GetComponent<BurgerManager>().AddToList(burger.GetComponent<Burger1Status>().isOverblended);
+            burger.GetComponent<Burger1Status>().isOverblended = false;
+            burgerManager.GetComponent<BurgerManager>().AddToList(isBurnt);
+
             burger.SetActive(false);
             burger.GetComponent<SpriteRenderer>().sprite = uncooked;
             pan1Key.SetActive(false);

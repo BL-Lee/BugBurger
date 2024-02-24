@@ -1234,6 +1234,7 @@ MonoBehaviour:
   pan1Key: {fileID: 1283998664}
   chargeBar: {fileID: 419598691}
   burger: {fileID: 1933254196}
+  burgerManager: {fileID: 545157581}
   uncooked: {fileID: 21300000, guid: 4d3dfaf6b060dc44aad585f89ce8b277, type: 3}
   halfCooked: {fileID: 21300000, guid: 09a5aa84c95ce234682f8b01e6a8ea8d, type: 3}
   fullCooked: {fileID: 21300000, guid: 7074cc9d775efe94f8a97f4ecfe2d42e, type: 3}
@@ -1269,6 +1270,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 545157582}
+  - component: {fileID: 545157583}
   m_Layer: 0
   m_Name: BurgerManager
   m_TagString: Untagged
@@ -1291,6 +1293,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 867547398}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &545157583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545157581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79dc20e318c41a142be490935ab668d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManger: {fileID: 1302714982}
+  NPC: {fileID: 97160412}
+  ServeKey: {fileID: 1925388758}
+  Warning: {fileID: 1661653859}
+  Bubble: {fileID: 1737083297}
+  emptyBubble: {fileID: 21300000, guid: 06c0e6fb78e6e1c40b8ae85e75d1c2a5, type: 3}
+  goodBubble: {fileID: 21300000, guid: d7afde7c52ffa7a4d86f9c319a1cfb68, type: 3}
+  overblendedBubble: {fileID: 21300000, guid: 70ef0974a5149a64ca8282071e01e93f, type: 3}
+  burntBubble: {fileID: 21300000, guid: 4617a62a00c00bd4cbe73ba87a8b4d4f, type: 3}
+  bothBubble: {fileID: 21300000, guid: 9dfcbeeba7754a347a5bc7cc42fab2eb, type: 3}
+  neutralNPC: {fileID: 21300000, guid: 5c9ec434af74bd14f8ec4a24d6d12984, type: 3}
+  happyNPC: {fileID: 21300000, guid: 7eaf40dc0363dce41a9a40d6192d56d7, type: 3}
+  sadNPC: {fileID: 21300000, guid: a26a716e122f5844b9a7e8e0bbe093f0, type: 3}
+  quality: 
+  rating: 0
+  burgerStatusList: 
 --- !u!1 &588711264
 GameObject:
   m_ObjectHideFlags: 0
@@ -2283,7 +2313,7 @@ MonoBehaviour:
   pan2Key: {fileID: 1460951037}
   chargeBar: {fileID: 457738600}
   burger: {fileID: 645179453}
-  burgerManager: {fileID: 0}
+  burgerManager: {fileID: 545157581}
   uncooked: {fileID: 21300000, guid: 4d3dfaf6b060dc44aad585f89ce8b277, type: 3}
   halfCooked: {fileID: 21300000, guid: 09a5aa84c95ce234682f8b01e6a8ea8d, type: 3}
   fullCooked: {fileID: 21300000, guid: 7074cc9d775efe94f8a97f4ecfe2d42e, type: 3}
@@ -2439,6 +2469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   antsCaught: 0
+  money: 0
   currentScreen: 0
   flipReady1: 0
   flipReady2: 0

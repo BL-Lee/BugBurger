@@ -42,6 +42,8 @@ public class Pan2Behavior : MonoBehaviour
     public bool flipRequired;
     public bool isBurnt;
 
+    GameGlobals globals;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,12 +54,12 @@ public class Pan2Behavior : MonoBehaviour
         overcooked = false;
         flipRequired = true;
         isBurnt = false;
+        globals = gameManger.GetComponent<GameGlobals>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        GameGlobals globals = gameManger.GetComponent<GameGlobals>();
         globals.flipReady2 = overcooking;
 
         if (Input.GetKeyDown("x") && pan2Key.activeSelf && gameManger.GetComponent<GameGlobals>().currentScreen == SCREEN.COOK && !overcooking){
@@ -74,6 +76,7 @@ public class Pan2Behavior : MonoBehaviour
             
             flipRequired = false;
             chargeBar.SetActive(true);
+            overcooking = false;
             uncookedCounter = 1;
             overcookingCounter = 1;
             InvokeRepeating("ChargeMeterStart", 0.0f, 0.4f);
@@ -84,6 +87,13 @@ public class Pan2Behavior : MonoBehaviour
             
             CancelInvoke("BeginOvercook");
             CancelInvoke("ChargeMeterStart");
+            CancelInvoke("Overcooked");
+
+            burgerManager.GetComponent<BurgerManager>().AddToList(burger.GetComponent<Burger2Status>().isOverblended);
+            burger.GetComponent<Burger2Status>().isOverblended = false;
+            burgerManager.GetComponent<BurgerManager>().AddToList(isBurnt);
+
+
             burger.SetActive(false);
             burger.GetComponent<SpriteRenderer>().sprite = uncooked;
             pan2Key.SetActive(false);

@@ -86,7 +86,7 @@ public class AudioController : MonoBehaviour
     public void SwitchScreen(SCREEN screen)
     {
         player.Pause();
-        if (screen == SCREEN.BUG)
+        if (screen == SCREEN.BUG || screen == SCREEN.SERVE)
         {
             if (globals.flipReady1 || globals.flipReady2 || globals.blendReady)
             {

@@ -6,6 +6,7 @@ public enum SCREEN {BUG, COOK, SERVE};
 public class GameGlobals : MonoBehaviour
 {
   public int antsCaught = 0;
+  public int money = 0;
   public SCREEN currentScreen = SCREEN.BUG; //
   public bool flipReady1 = false;
   public bool flipReady2 = false;
