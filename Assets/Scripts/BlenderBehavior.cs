@@ -43,13 +43,14 @@ public class BlenderBehavior : MonoBehaviour
     public int overblendedCounter;
     public int overblendAnimationCounter;
 
-
+    public AudioController audio;
 
     public bool overblending;
     public bool blendReady;
     public bool blending;
     public bool finished;
     public bool waitingForKeyPressPan;
+
 
     // Start is called before the first frame update
     void Start()
@@ -69,6 +70,10 @@ public class BlenderBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GameGlobals globals = gameManger.GetComponent<GameGlobals>();
+        globals.blendReady = overblending;
+        globals.blending = blending;
+
         int numAnts = gameManger.GetComponent<GameGlobals>().antsCaught;
         if (numAnts > 4 && !blendReady && !blending){
             interactKey.SetActive(true);
@@ -83,6 +88,7 @@ public class BlenderBehavior : MonoBehaviour
             blending = true;
             InvokeRepeating("Blend", 0.0f, 0.25f);
             InvokeRepeating("ChargeMeterStart", 0.0f, 0.5f);
+            audio.PlayBlender();
         }
 
         if (Input.GetKeyDown("x") && waitingForKeyPressPan)
@@ -103,6 +109,9 @@ public class BlenderBehavior : MonoBehaviour
             overblendingCounter = 1;
             overblendedCounter = 1;
             overblendAnimationCounter = 1;
+            globals.panning++;
+            audio.PlayPan();
+
         }
 
         if (finished){

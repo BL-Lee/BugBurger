@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour
     private float startX;
     private float transitionTime;
     GameGlobals globals;
+    public AudioController audio;
 
     private float totalTransitionTime = 0.5f;
 
@@ -62,6 +63,7 @@ public class CameraController : MonoBehaviour
             globals.currentScreen = SCREEN.BUG;
             tabWasSelected = tabSelected;
             tabSelected = 0;
+            audio.SwitchScreen(SCREEN.BUG);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
@@ -71,6 +73,8 @@ public class CameraController : MonoBehaviour
             globals.currentScreen = SCREEN.COOK;
             tabWasSelected = tabSelected;
             tabSelected = 1;
+            audio.SwitchScreen(SCREEN.COOK);
+
 
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
@@ -81,6 +85,8 @@ public class CameraController : MonoBehaviour
             globals.currentScreen = SCREEN.SERVE;
             tabWasSelected = tabSelected;
             tabSelected = 2;
+            audio.SwitchScreen(SCREEN.SERVE);
+
 
         }
         if (shakeDuration > 0)

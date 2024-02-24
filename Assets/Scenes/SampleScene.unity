@@ -340,6 +340,7 @@ MonoBehaviour:
   overblendingCounter: 0
   overblendedCounter: 0
   overblendAnimationCounter: 0
+  audio: {fileID: 914088176}
   overblending: 0
   blendReady: 0
   blending: 0
@@ -1022,6 +1023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe04a1ceb39443f42bc0afd362dd5ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audio: {fileID: 914088176}
   shakeDuration: 0
   shakeAmount: 0.01
   shakeFalloff: 1
@@ -1144,6 +1146,7 @@ MonoBehaviour:
   charge12: {fileID: 21300000, guid: 2025f250a1195174e862fa38ff39a752, type: 3}
   charge13: {fileID: 21300000, guid: c2e24644dff7c4a4e9481748fbcd239b, type: 3}
   charge14: {fileID: 21300000, guid: 73ef94d23ac85a840ae0229f854e9819, type: 3}
+  audio: {fileID: 914088176}
   uncookedCounter: 0
   overcookingCounter: 0
   overcooking: 0
@@ -1684,6 +1687,7 @@ GameObject:
   m_Component:
   - component: {fileID: 914088175}
   - component: {fileID: 914088174}
+  - component: {fileID: 914088176}
   m_Layer: 0
   m_Name: AudioPlayer
   m_TagString: Untagged
@@ -1802,6 +1806,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &914088176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914088173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1515c3739d77e4429380a948f88d016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hammer: {fileID: 8300000, guid: a09b4d4b0dcca5d418452824231a7412, type: 3}
+  beep: {fileID: 8300000, guid: f704ab020ac63784090ec89456fb6d07, type: 3}
+  blender: {fileID: 8300000, guid: fe5414cf35105bf43908c06057b84b4e, type: 3}
+  pan: {fileID: 8300000, guid: a75d31ee40f664d42be039cbed8ff7ee, type: 3}
 --- !u!1 &946745928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1951,7 +1971,7 @@ MonoBehaviour:
   hitDuration: 0.5
   bugController: {fileID: 692339514}
   CameraController: {fileID: 519420034}
-  audioPlayer: {fileID: 914088174}
+  audio: {fileID: 914088176}
 --- !u!212 &997229207
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2123,6 +2143,7 @@ MonoBehaviour:
   charge12: {fileID: 21300000, guid: 2025f250a1195174e862fa38ff39a752, type: 3}
   charge13: {fileID: 21300000, guid: c2e24644dff7c4a4e9481748fbcd239b, type: 3}
   charge14: {fileID: 21300000, guid: 73ef94d23ac85a840ae0229f854e9819, type: 3}
+  audio: {fileID: 914088176}
   uncookedCounter: 0
   overcookingCounter: 0
   overcooking: 0
@@ -2260,6 +2281,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   antsCaught: 0
   currentScreen: 0
+  flipReady1: 0
+  flipReady2: 0
+  blendReady: 0
+  blending: 0
+  panning: 0
 --- !u!4 &1302714984
 Transform:
   m_ObjectHideFlags: 0
@@ -2755,5 +2781,5 @@ SceneRoots:
   - {fileID: 1389961038}
   - {fileID: 391900716}
   - {fileID: 867547398}
-  - {fileID: 914088175}
   - {fileID: 588711266}
+  - {fileID: 914088175}

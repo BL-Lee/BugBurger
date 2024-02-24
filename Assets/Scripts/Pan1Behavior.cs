@@ -29,6 +29,9 @@ public class Pan1Behavior : MonoBehaviour
     public Sprite charge13;
     public Sprite charge14;
 
+    public AudioController audio;
+
+
     public int uncookedCounter;
     public int overcookingCounter;
 
@@ -53,6 +56,9 @@ public class Pan1Behavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GameGlobals globals = gameManger.GetComponent<GameGlobals>();
+        globals.flipReady1 = overcooking;
+
         if (Input.GetKeyDown("x") && pan1Key.activeSelf && gameManger.GetComponent<GameGlobals>().currentScreen == SCREEN.COOK && !overcooking){
             pan1Key.SetActive(false);
             chargeBar.SetActive(true);
@@ -85,6 +91,11 @@ public class Pan1Behavior : MonoBehaviour
             overcooked = false;
             flipRequired = true;
             isBurnt = false;
+            globals.panning--;
+            if (globals.panning == 0)
+            {
+                audio.StopPan();
+            }
         }
     }
 

@@ -15,7 +15,7 @@ public class HammerController : MonoBehaviour
     GameGlobals globals;
     public CameraController CameraController;
 
-    public AudioSource audioPlayer;
+    public AudioController audio;
 
     private Vector2Int location = new Vector2Int(0,0);
 
@@ -38,7 +38,7 @@ public class HammerController : MonoBehaviour
             hitTime = 0.5f;
             srenderer.sprite = hit;
             bugController.WhackBugs(location);
-            audioPlayer.Play(0);
+            audio.PlayHammer();
             CameraController.Shake(0.1f);
         }
 
