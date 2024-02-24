@@ -710,10 +710,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 415ad268-9cf2-496b-bd86-416857113164
+  cloudProjectId: 03316f12-771c-4125-98fb-6417e285c0b6
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: BugBurger
+  projectName: Bug Game
   organizationId: gobbledeegook
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
