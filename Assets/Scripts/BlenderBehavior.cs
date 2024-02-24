@@ -50,16 +50,20 @@ public class BlenderBehavior : MonoBehaviour
     public bool blending;
     public bool finished;
     public bool waitingForKeyPressPan;
+    public bool isOverblended;
+    public bool goingToPan2;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        goingToPan2 = false;
         finished = false;
         blendReady = false;
         blending = false;
         overblending = false;
         waitingForKeyPressPan = false;
+        isOverblended = false;
         blendingCounter = 1;
         animationCounter = 1;
         overblendingCounter = 1;
@@ -91,8 +95,40 @@ public class BlenderBehavior : MonoBehaviour
             audio.PlayBlender();
         }
 
+        if (finished){
+            if (!pan2ChargeBar.activeSelf && !pan2Burger.activeSelf)
+            {
+                pan2Key.SetActive(true);
+                goingToPan2 = true;                
+                finished = false;
+                waitingForKeyPressPan = true;
+            }
+            else if (!pan1ChargeBar.activeSelf && !pan1Burger.activeSelf)
+            {
+                goingToPan2 = false;
+                pan1Key.SetActive(true);
+                finished = false;
+                waitingForKeyPressPan = true;
+            }
+
+        }
+
         if (Input.GetKeyDown("x") && waitingForKeyPressPan)
         {
+            if (isOverblended)
+            {
+                if (goingToPan2)
+                {
+                    pan2Burger.GetComponent<Burger2Status>().isOverblended = true;
+                }
+                else
+                {
+                    pan1Burger.GetComponent<Burger1Status>().isOverblended = true;
+                }
+                
+            }
+            
+
             CancelInvoke("Blend");
             CancelInvoke("ChargeMeterStart");
             CancelInvoke("Overblending");
@@ -104,6 +140,8 @@ public class BlenderBehavior : MonoBehaviour
             blending = false;
             overblending = false;
             waitingForKeyPressPan = false;
+            isOverblended = false;
+            goingToPan2 = false;
             blendingCounter = 1;
             animationCounter = 1;
             overblendingCounter = 1;
@@ -114,21 +152,7 @@ public class BlenderBehavior : MonoBehaviour
 
         }
 
-        if (finished){
-            if (!pan2ChargeBar.activeSelf && !pan2Burger.activeSelf)
-            {
-                pan2Key.SetActive(true);
-                finished = false;
-                waitingForKeyPressPan = true;
-            }
-            else if (!pan1ChargeBar.activeSelf && !pan1Burger.activeSelf)
-            {
-                pan1Key.SetActive(true);
-                finished = false;
-                waitingForKeyPressPan = true;
-            }
-
-        }
+        
     }
     
 
@@ -232,6 +256,7 @@ public class BlenderBehavior : MonoBehaviour
     void Overblended()
     {
         CancelInvoke("Blend");
+        isOverblended = true;
         switch (overblendAnimationCounter)
         {
             case 1:

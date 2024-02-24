@@ -8,6 +8,7 @@ public class Pan2Behavior : MonoBehaviour
     public GameObject pan2Key;
     public GameObject chargeBar;
     public GameObject burger;
+    public GameObject burgerManager;
 
     public Sprite uncooked;
     public Sprite halfCooked;
@@ -79,6 +80,8 @@ public class Pan2Behavior : MonoBehaviour
         }
 
         if (Input.GetKeyDown("x") && pan2Key.activeSelf && gameManger.GetComponent<GameGlobals>().currentScreen == SCREEN.COOK && ((overcooking && !flipRequired) || isBurnt)){
+            
+            
             CancelInvoke("BeginOvercook");
             CancelInvoke("ChargeMeterStart");
             burger.SetActive(false);
