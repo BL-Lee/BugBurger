@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ClockManager : MonoBehaviour
 {
@@ -10,10 +11,14 @@ public class ClockManager : MonoBehaviour
     int spriteIndex = 0;
     SpriteRenderer s;
     GameGlobals globals;
+    public GameObject gameOverScreen;
+    public GameObject audioController;
+    public bool gameOver;
 
     // Start is called before the first frame update
     void Start()
-    {        
+    {
+        gameOver = false;        
         globals = GameObject.Find("Globals").GetComponent<GameGlobals>();
         s = GetComponent<SpriteRenderer>();
     }
@@ -21,6 +26,8 @@ public class ClockManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         if (globals.currentScreen == SCREEN.SERVE)
         {
             s.enabled = false;
@@ -33,14 +40,24 @@ public class ClockManager : MonoBehaviour
 
         if (timeElapsed >= totalSecondsInGame)
         {
-            Debug.Log("GAME OVER!!!! Quit game here");
+            gameOver = true;
+            audioController.SetActive(false);
+            gameOverScreen.SetActive(true);
+            
+            Time.timeScale = 0;
+            //Destroy(this);
+            //Debug.Log("GAME OVER!!!! Quit game here");
         }
-        int i = (int)(timeElapsed * sprites.Length / totalSecondsInGame);
-        if (i != spriteIndex)
+        if (!gameOver)
         {
-            s.sprite = sprites[i];
-            spriteIndex = i;
+            int i = (int)(timeElapsed * sprites.Length / totalSecondsInGame);
+            if (i != spriteIndex)
+            {
+                s.sprite = sprites[i];
+                spriteIndex = i;
+            }
         }
+        
 
 
     }
