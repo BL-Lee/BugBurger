@@ -19,8 +19,10 @@ public class CameraController : MonoBehaviour
     Vector3 originalPos;
 
     GameObject[] tabs;
-    float tabUnselectedPos = 0.31f;
-    float tabSelectedPos = 0.47f;
+    float[] tabPos;
+    float[] tabTargetPos;
+    float tabUnselectedPos = 0.32f;
+    float tabSelectedPos = 0.46f;
     int tabSelected = 0;
     int tabWasSelected = 0;
 
@@ -39,6 +41,11 @@ public class CameraController : MonoBehaviour
         tabs[0] = GameObject.Find("Tab 1");
         tabs[1] = GameObject.Find("Tab 2");
         tabs[2] = GameObject.Find("Tab 3");
+        tabPos = new float[3];
+        tabPos[0] = 0.31f; tabPos[1] = 0.31f; tabPos[1] = 0.31f;
+        tabTargetPos = new float[3];
+        tabTargetPos[0] = 0.31f; tabTargetPos[1] = 0.31f; tabTargetPos[1] = 0.31f;
+
 
         cam = GetComponent<Camera>();
         originalPos = transform.localPosition;
@@ -51,6 +58,21 @@ public class CameraController : MonoBehaviour
         shakeAmount = 0.01f;
     }
 
+    void setTargetPos(int t)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if(t == i)
+            {
+                tabTargetPos[i] = tabSelectedPos;
+            }
+            else 
+                tabTargetPos[i] = tabUnselectedPos;
+
+            tabPos[i] = tabs[i].transform.localPosition.x;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -61,9 +83,11 @@ public class CameraController : MonoBehaviour
             transitionTime = totalTransitionTime;
             startX = cam.transform.position.x;
             globals.currentScreen = SCREEN.BUG;
-            tabWasSelected = tabSelected;
-            tabSelected = 0;
+            //tabWasSelected = tabSelected;
+            //tabSelected = 0;
             audio.SwitchScreen(SCREEN.BUG);
+                        setTargetPos(0);
+
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
@@ -71,9 +95,10 @@ public class CameraController : MonoBehaviour
             transitionTime = totalTransitionTime;
             startX = cam.transform.position.x;
             globals.currentScreen = SCREEN.COOK;
-            tabWasSelected = tabSelected;
-            tabSelected = 1;
+            //tabWasSelected = tabSelected;
+            //tabSelected = 1;
             audio.SwitchScreen(SCREEN.COOK);
+            setTargetPos(1);
 
 
         }
@@ -83,10 +108,10 @@ public class CameraController : MonoBehaviour
             transitionTime = totalTransitionTime;
             startX = cam.transform.position.x;
             globals.currentScreen = SCREEN.SERVE;
-            tabWasSelected = tabSelected;
-            tabSelected = 2;
+            //tabWasSelected = tabSelected;
+            //tabSelected = 2;
             audio.SwitchScreen(SCREEN.SERVE);
-
+            setTargetPos(2);
 
         }
         if (shakeDuration > 0)
@@ -119,7 +144,7 @@ public class CameraController : MonoBehaviour
             {
                 Vector3 start = tabs[i].transform.localPosition;
                 Vector3 end = tabs[i].transform.localPosition;
-                if (tabSelected == i)
+               /* if (tabSelected == i)
                 {
                     start.x = tabUnselectedPos;
                     end.x = tabSelectedPos;
@@ -128,8 +153,11 @@ public class CameraController : MonoBehaviour
                 {
                     start.x = tabSelectedPos;
                     end.x = tabUnselectedPos;
-                }
-                else continue;
+                }*/
+
+                //else continue;
+                start.x = tabPos[i];
+                end.x = tabTargetPos[i];
                 tabs[i].transform.localPosition = Vector3.Lerp(start, end, easeValue); // make it finish in 0.5s
             }
 
