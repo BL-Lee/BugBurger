@@ -18,6 +18,10 @@ public class CameraController : MonoBehaviour
     public float shakeFalloff = 1.0f;
     Vector3 originalPos;
 
+    public SpriteRenderer s2;
+    public Sprite flash0;
+    public Sprite flash1;
+
     GameObject[] tabs;
     float[] tabPos;
     float[] tabTargetPos;
@@ -76,6 +80,18 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (globals.currentScreen != SCREEN.COOK)
+        {
+            s2.sprite = flash0;
+            if (globals.flipReady1 || globals.flipReady2 || globals.blendReady)
+            {
+                s2.sprite = flash1;
+            }
+        }
+        else
+        {
+            s2.sprite = flash0;
+        }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
