@@ -196,13 +196,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 110
   m_Sprite: {fileID: 21300000, guid: 9e5bb7a254162914c8ea44c825d869e8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.09}
+  m_Size: {x: 0.2, y: 0.1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -478,8 +478,8 @@ Transform:
   m_GameObject: {fileID: 113906800}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.14, y: -0.1, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.18, y: -0.1, z: 10}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1488382258}
@@ -524,13 +524,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 103
+  m_SortingOrder: 302
   m_Sprite: {fileID: 21300000, guid: 8f0fd31a36200d04fac2b5cbfd0a2823, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.03, y: 0.05}
+  m_Size: {x: 0.04, y: 0.05}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -614,7 +614,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.09}
+  m_Size: {x: 0.22, y: 0.1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -808,7 +808,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 102
+  m_SortingOrder: 300
   m_Sprite: {fileID: 21300000, guid: e79b596623eda5f428db50686278625b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -832,19 +832,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a202fd819fe6c9e47b85f7e2d45db56d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  moneyDigitOne: {fileID: 0}
-  moneyDigitTwo: {fileID: 0}
-  zero: {fileID: 0}
-  one: {fileID: 0}
-  two: {fileID: 0}
-  three: {fileID: 0}
-  four: {fileID: 0}
-  five: {fileID: 0}
-  six: {fileID: 0}
-  seven: {fileID: 0}
-  eight: {fileID: 0}
-  nine: {fileID: 0}
+  gameManager: {fileID: 1302714982}
+  moneyDigitOne: {fileID: 2146771942}
+  moneyDigitTwo: {fileID: 113906800}
+  zero: {fileID: 21300000, guid: 8f0fd31a36200d04fac2b5cbfd0a2823, type: 3}
+  one: {fileID: 21300000, guid: 318745c3fc9a8454b8e15369f015250f, type: 3}
+  two: {fileID: 21300000, guid: 06d5656ca6770384db99a9dc81ea8511, type: 3}
+  three: {fileID: 21300000, guid: 0924f89cd7ab6a843bdc9a5c75fcb5b0, type: 3}
+  four: {fileID: 21300000, guid: 828cd2b5e0fb4aa4a9a1a3df77e73cd6, type: 3}
+  five: {fileID: 21300000, guid: 8d80f3d431b43994fbd0de4cbf4cda3e, type: 3}
+  six: {fileID: 21300000, guid: a2c40e7aba44ee44d926831611dd4946, type: 3}
+  seven: {fileID: 21300000, guid: 60f6873cb94c3fe4c87e32da3bcc51ec, type: 3}
+  eight: {fileID: 21300000, guid: ea59bc68fa9069946ba00670c29cd3ce, type: 3}
+  nine: {fileID: 21300000, guid: 792430cc6374c0244ad952a00e31032b, type: 3}
   money: 0
 --- !u!1 &391900715
 GameObject:
@@ -1150,7 +1150,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 465912393}
-  - component: {fileID: 465912394}
   - component: {fileID: 465912395}
   m_Layer: 0
   m_Name: MoneyManger
@@ -1174,32 +1173,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1979912955}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &465912394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 465912392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a202fd819fe6c9e47b85f7e2d45db56d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 1302714982}
-  moneyDigitOne: {fileID: 2146771942}
-  moneyDigitTwo: {fileID: 113906800}
-  zero: {fileID: 21300000, guid: 8f0fd31a36200d04fac2b5cbfd0a2823, type: 3}
-  one: {fileID: 21300000, guid: 318745c3fc9a8454b8e15369f015250f, type: 3}
-  two: {fileID: 21300000, guid: 06d5656ca6770384db99a9dc81ea8511, type: 3}
-  three: {fileID: 21300000, guid: 0924f89cd7ab6a843bdc9a5c75fcb5b0, type: 3}
-  four: {fileID: 21300000, guid: 828cd2b5e0fb4aa4a9a1a3df77e73cd6, type: 3}
-  five: {fileID: 21300000, guid: 8d80f3d431b43994fbd0de4cbf4cda3e, type: 3}
-  six: {fileID: 21300000, guid: a2c40e7aba44ee44d926831611dd4946, type: 3}
-  seven: {fileID: 21300000, guid: 60f6873cb94c3fe4c87e32da3bcc51ec, type: 3}
-  eight: {fileID: 21300000, guid: ea59bc68fa9069946ba00670c29cd3ce, type: 3}
-  nine: {fileID: 21300000, guid: 792430cc6374c0244ad952a00e31032b, type: 3}
-  money: 0
 --- !u!114 &465912395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1215,9 +1188,9 @@ MonoBehaviour:
   gameManager: {fileID: 1302714982}
   moneyDigitOne: {fileID: 1382546100}
   moneyDigitTwo: {fileID: 2031525946}
-  zero: {fileID: 21300000, guid: fb6769e4c41075f49aa6400c54a3c3c0, type: 3}
-  one: {fileID: 21300000, guid: 2421717c428c3ba46a053adf91b57c69, type: 3}
-  two: {fileID: 21300000, guid: f2e8c412e40a2304dac088a654f24b35, type: 3}
+  zero: {fileID: 21300000, guid: 8f0fd31a36200d04fac2b5cbfd0a2823, type: 3}
+  one: {fileID: 21300000, guid: 318745c3fc9a8454b8e15369f015250f, type: 3}
+  two: {fileID: 21300000, guid: 06d5656ca6770384db99a9dc81ea8511, type: 3}
   three: {fileID: 21300000, guid: 6b75f3c4d2be89f46a0d9b55ee662d29, type: 3}
   four: {fileID: 21300000, guid: caa8a2aee32f858438044392ba1fbb0b, type: 3}
   five: {fileID: 21300000, guid: 26f7048b9035b674391ff173d9e29eca, type: 3}
@@ -1863,7 +1836,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.09}
+  m_Size: {x: 0.22, y: 0.1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1972,7 +1945,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.03, y: 0.05}
+  m_Size: {x: 0.04, y: 0.06}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2767,7 +2740,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.03, y: 0.05}
+  m_Size: {x: 0.04, y: 0.06}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3322,7 +3295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468bbf241568fcd4096cf2ef1bd9a448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalSecondsInGame: 180
+  totalSecondsInGame: 20
   timeElapsed: 0
   sprites:
   - {fileID: 21300000, guid: 8faa13511845923469c216106760b8b3, type: 3}
@@ -3755,7 +3728,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.09}
+  m_Size: {x: 0.2, y: 0.1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3839,7 +3812,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.03, y: 0.05}
+  m_Size: {x: 0.04, y: 0.06}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3923,7 +3896,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.09}
+  m_Size: {x: 0.22, y: 0.1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3956,7 +3929,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.1, y: -0.1, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1488382258}
@@ -4001,13 +3974,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 103
+  m_SortingOrder: 301
   m_Sprite: {fileID: 21300000, guid: 8f0fd31a36200d04fac2b5cbfd0a2823, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.03, y: 0.05}
+  m_Size: {x: 0.04, y: 0.05}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
